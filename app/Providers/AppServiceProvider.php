@@ -2,7 +2,13 @@
 
 namespace App\Providers;
 
+use App\Models\Brand;
+use App\Models\Location;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
+use Laravel\Sanctum\Sanctum;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -11,7 +17,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+        Sanctum::ignoreMigrations();
     }
 
     /**
@@ -19,6 +25,21 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        Model::preventLazyLoading(!$this->app->isProduction());
+        Paginator::useBootstrapFive();
+
+        View::composer('app.nav', function ($view) {
+            $brands = Brand::withCount('products')
+                ->orderBy('name')
+                ->get();
+            $locations = Location::withCount('products')
+                ->orderBy('name')
+                ->get();
+
+            $view->with([
+                'brands' => $brands,
+                'locations' => $locations,
+            ]);
+        });
     }
 }
