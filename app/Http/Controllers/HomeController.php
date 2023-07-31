@@ -9,17 +9,17 @@ use Illuminate\Http\Request;
 class HomeController extends Controller
 {
     public function index(){
-        $brands = Category::withCount ('brands')
+        $categories = Category::withCount ('products')
             ->orderBy('products_count', 'desc')
             ->take(7)
             ->get();
 
-        $brandProducts = [];
-        foreach ($brands as $brand){
-            $brandProducts[] = [
-                'brand' => $brand,
-                'products' => product::where('brand_id', $brand->id)
-                    ->with('brand')
+        $categoryProducts = [];
+        foreach ($categories as $category){
+            $categoryProducts[] = [
+                'category' => $category,
+                'products' => product::where('category_id', $category->id)
+                    ->with('category')
                     ->take(7)
                     ->get(),
             ];
@@ -27,7 +27,7 @@ class HomeController extends Controller
 
         return view('home.index')
             ->with([
-                'brandProducts' => $brandProducts,
+                'categoryProducts' => $categoryProducts,
             ]);
     }
 

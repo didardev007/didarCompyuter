@@ -10,7 +10,12 @@
     <link rel="stylesheet" href="{{asset ('css/bootstrap-icons.css') }}">
     <script type="text/javascript" src="{{asset ('js/bootstrap.bundle.min.js') }}"></script>
 </head>
-<body>
+<body class="bg-dark">
+@include('app.navbar')
+
+
+@yield('body')
+
 
 </body>
 </html>

@@ -20,6 +20,10 @@ class Product extends Model
         'price',
     ];
 
+
+
+
+
     public function location(): BelongsTo {
         return $this->belongsTo(Location::class);
     }
