@@ -23,23 +23,23 @@ class AppServiceProvider extends ServiceProvider
     /**
      * Bootstrap any application services.
      */
-    public function boot(): void
-    {
-        Model::preventLazyLoading(!$this->app->isProduction());
-        Paginator::useBootstrapFive();
-
-        View::composer('app.nav', function ($view) {
-            $brands = Brand::withCount('products')
-                ->orderBy('name')
-                ->get();
-            $locations = Location::withCount('products')
-                ->orderBy('name')
-                ->get();
-
-            $view->with([
-                'brands' => $brands,
-                'locations' => $locations,
-            ]);
-        });
-    }
+//    public function boot(): void
+//    {
+//        Model::preventLazyLoading(!$this->app->isProduction());
+//        Paginator::useBootstrapFive();
+//
+//        View::composer('app.nav', function ($view) {
+//            $brands = Brand::withCount('products')
+//                ->orderBy('name')
+//                ->get();
+//            $locations = Location::withCount('products')
+//                ->orderBy('name')
+//                ->get();
+//
+//            $view->with([
+//                'brands' => $brands,
+//                'locations' => $locations,
+//            ]);
+//        });
+//    }
 }
