@@ -21,7 +21,7 @@ class ProductController extends Controller
         $f_perPage = $request->has('perPage') ? $request->perPage : 15;
 
         $products = Brand::when($f_brands, function ($query) use ($f_brands){
-          $query->whereIn('brand_id',$f_brands);
+            $query->whereIn('brand_id',$f_brands);
         })
             ->with('brand')
             ->when(isset($f_sort), function ($query) use ($f_sort) {

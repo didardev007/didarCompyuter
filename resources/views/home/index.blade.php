@@ -1,13 +1,23 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-    @extends('layouts.layouts')
-</body>
-</html>
+@extends('layouts.layouts')
+@section('title')
+@endsection
+@section('body')
+    @foreach($brandProducts as $brandProduct)
+        <div class="border-top">
+            <div class="container-xl py-4">
+                <div class="h5 mb-3">
+                    <a href="{{ route('product.index', ['brand' => $brandProduct['brand']->id]) }}" class="link-danger text-decoration-none">
+                        {{ $brandProduct['brand']->name }}
+                    </a>
+                </div>
+                <div class="row row-cols-1 row-cols-md-2 row-cols-xl-4 g-4">
+                    @foreach($brandProduct['products'] as $product)
+                        <div class="col">
+                            @include('app.product')
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+        </div>
+    @endforeach
+@endsection

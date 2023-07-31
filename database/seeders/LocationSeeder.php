@@ -15,7 +15,7 @@ class LocationSeeder extends Seeder
             'Ahal',
             'Balkan',
             'Mary',
-            'Dashaguz',
+            'Dashoguz',
             'Lebap',
         ];
 
