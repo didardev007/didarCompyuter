@@ -5,7 +5,7 @@
 @section('body')
     <div class="container-xl py-4">
         <div class="row g-4">
-            <div class="col-md-4 col-xl-3">
+            <div class="col-md-5 col-xl-3">
                 @include('app.filter')
             </div>
             <div class="col">

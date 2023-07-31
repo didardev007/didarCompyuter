@@ -1,5 +1,6 @@
 @extends('layouts.layouts')
 @section('title')
+    DidarComputer
 @endsection
 @section('body')
     @foreach($brandProducts as $brandProduct)

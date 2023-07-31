@@ -9,7 +9,7 @@
         </select>
     </div>
     <div class="mb-3">
-        <label for="location" class="form-label fw-semibold">location</label>
+        <label for="location" class="form-label fw-semibold text-danger">Location</label>
         <select class="form-select form-select-sm" name="location" id="location">
             <option value="0">all</option>
             @foreach($locations as $location)
@@ -18,7 +18,7 @@
         </select>
     </div>
     <div class="mb-3">
-        <label for="color" class="form-label fw-semibold">color</label>
+        <label for="color" class="form-label fw-semibold text-danger">color</label>
         <select class="form-select form-select-sm" name="color" id="color">
             <option value="0">all</option>
             @foreach($colors as $color)
@@ -27,7 +27,7 @@
         </select>
     </div>
     <div class="mb-3">
-        <label for="sort" class="form-label fw-semibold">sort</label>
+        <label for="sort" class="form-label fw-semibold text-danger">sort</label>
         <select class="form-select form-select-sm" name="sort" id="sort">
             <option value="new-to-old" {{ 'new-to-old' == $f_sort ? 'selected' : '' }}>NewToOld</option>
             <option value="old-to-new" {{ 'old-to-new' == $f_sort ? 'selected' : '' }}>OldToNew</option>
@@ -36,7 +36,7 @@
         </select>
     </div>
     <div class="mb-3">
-        <label for="perPage" class="form-label fw-semibold">perPage</label>
+        <label for="perPage" class="form-label fw-semibold text-danger">perPage</label>
         <select class="form-select form-select-sm" name="perPage" id="perPage">
             @foreach([15, 30, 60, 120] as $perPage)
                 <option value="{{ $perPage }}" {{ $perPage == $f_perPage ? 'selected' : '' }}>{{ $perPage }}</option>
@@ -51,7 +51,7 @@
         </div>
         <div class="col">
             <button type="submit" class="btn btn-danger btn-sm w-100">
-                <i class="bi-funnel">filter</i>
+                filter
             </button>
         </div>
     </div>
